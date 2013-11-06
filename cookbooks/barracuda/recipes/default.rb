@@ -19,49 +19,49 @@ execute "/tmp/BOA.sh" do
   creates "/usr/local/bin/boa"
 end
 
-execute "Run the BOA Installer iaminaweoctopus" do
-  command "boa in-head local gregg@iaminawe.com mini iaminaweoctopus"
+execute "Run the BOA Installer re_octopus" do
+  command "boa in-head local cmsadmin@raisedeyebrow.com mini re_octopus"
 end
 
-  user "iaminaweoctopus" do
+  user "re_octopus" do
     supports :manage_home => true
-    home "/data/disk/iaminaweoctopus"
+    home "/data/disk/re_octopus"
     shell "/bin/bash"
   end
 
-  directory "/data/disk/iaminaweoctopus/.ssh" do
-    owner "iaminaweoctopus"
+  directory "/data/disk/re_octopus/.ssh" do
+    owner "re_octopus"
     group "users"
     mode 00700
     recursive true
   end
 
   execute "Add ssh key to user" do
-    command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/iaminaweoctopus/.ssh/id_rsa"
-    creates "/data/disk/iaminaweoctopus/.ssh/id_rsa"
+    command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/re_octopus/.ssh/id_rsa"
+    creates "/data/disk/re_octopus/.ssh/id_rsa"
   end
 
-  file "/data/disk/iaminaweoctopus/.ssh/id_rsa" do
-    owner "iaminaweoctopus"
+  file "/data/disk/re_octopus/.ssh/id_rsa" do
+    owner "re_octopus"
     group "users"
     mode 00600
   end
   
-  file "/data/disk/iaminaweoctopus/.ssh/id_rsa.pub" do
-    owner "iaminaweoctopus"
+  file "/data/disk/re_octopus/.ssh/id_rsa.pub" do
+    owner "re_octopus"
     group "users"
     mode 00600
   end  
 
  # Only necessary as long as there is a need for it
-remote_file "/tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch" do
-  source "https://raw.github.com/iaminawe/boa-vagrant/master/patches/fix-remote-import-hostmaster-iaminaweoctopus.patch"
+remote_file "/tmp/fix-remote-import-hostmaster-re_octopus.patch" do
+  source "https://raw.github.com/iaminawe/boa-vagrant/master/patches/fix-remote-import-hostmaster-re_octopus.patch"
   mode 00755
 end
 
 execute "Apply Remote Import hostmaster patch" do
-  cwd "/data/disk/iaminaweoctopus/.drush/provision/remote_import"
-  command "patch -p1 < /tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch"
+  cwd "/data/disk/re_octopus/.drush/provision/remote_import"
+  command "patch -p1 < /tmp/fix-remote-import-hostmaster-re_octopus.patch"
 end
 
 # Rebuild VirtualBox Guest Additions
