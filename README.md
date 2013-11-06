@@ -36,7 +36,7 @@ Step by Step instructions
 
 - 2.) Edit this file /cookbooks/barracuda/recipes/default.rb and replace iaminaweoctopus (my octopus username) with your octopus username and my e-mail with your e-mail - you can read more about the other additional options here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt
 
-- 3.) Edit the patch filename and contents to replace all instances of iaminaweoctopus with your own octopus username https://github.com/iaminawe/boa-vagrant/tree/master/patches
+- 3.) Edit the patch filename and contents to replace all instances of iaminaweoctopus with your own octopus username https://github.com/iaminawe/boa-vagrant/patches
 
 - 4.) Run "Vagrant up" from within the folder and wait around 60 mins
 
