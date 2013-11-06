@@ -49,13 +49,13 @@ end
   
   file "/data/disk/re_octopus/.ssh/id_rsa.pub" do
     owner "re_octopus"
-    group "users"
+    group "users" 
     mode 00600
   end  
 
  # Only necessary as long as there is a need for it
 remote_file "/tmp/fix-remote-import-hostmaster-re_octopus.patch" do
-  source "https://raw.github.com/iaminawe/boa-vagrant/master/patches/fix-remote-import-hostmaster-re_octopus.patch"
+  source "https://raw.github.com/MattReimer/boa-vagrant/master/patches/fix-remote-import-hostmaster-re_octopus.patch"
   mode 00755
 end
 
