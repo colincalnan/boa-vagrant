@@ -24,11 +24,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network :private_network, ip: "192.168.10.88"
-
+  
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network :public_network
+  # config.vm.network :public_network
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
@@ -38,13 +38,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  # config.vm.synced_folder "../shared", "/vagrant_data"
+    # config.vm.synced_folder "~/drupal_platforms", "/vagrant/platforms"
   # 
   
 ##  Uncomment the following line to transparently mount the platforms folder (which must exist first) on your mac to the octopus user static folder used for storing platforms
-##  Important note: This should not be done on the initial vagrant build, after the initial vagrant up, edit this file, vagrant ssh in, run sudo /etc/init.d/vboxadd setup, exit the guest system and run vagrant reload.
-
-#  config.vm.synced_folder "~/workspace/platforms", "/data/disk/iaminaweoctopus/static", nfs: true
+##  Important note: This should not be done on the initial vagrant build, after the initial vagrant up, 
+##  edit this file, vagrant ssh in, run sudo /etc/init.d/vboxadd setup, exit the guest system and run vagrant reload.
+ config.vm.synced_folder "workspace/platforms", "/data/disk/reoctopus/static", nfs: true
 
 
   # Provider-specific configuration so you can fine-tune various

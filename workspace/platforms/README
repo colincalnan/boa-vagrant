@@ -1,0 +1,5 @@
+This directory is here so that you can put your workspaces in it. Eventually you
+may want them to live elsewhere. Look for the line in the Vagrantfile:
+
+
+# config.vm.synced_folder "workspace/platforms", "/data/disk/iaminaweoctopus/static", nfs: true
