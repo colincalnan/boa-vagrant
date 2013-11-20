@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 ##  Uncomment the following line to transparently mount the platforms folder (which must exist first) on your mac to the octopus user static folder used for storing platforms
 ##  Important note: This should not be done on the initial vagrant build, after the initial vagrant up, 
 ##  edit this file, vagrant ssh in, run sudo /etc/init.d/vboxadd setup, exit the guest system and run vagrant reload.
- config.vm.synced_folder "workspace/platforms", "/data/disk/reoctopus/static", nfs: true
+ config.vm.synced_folder "workspace/platforms", "/data/disk/platforms", nfs: true
 
 
   # Provider-specific configuration so you can fine-tune various

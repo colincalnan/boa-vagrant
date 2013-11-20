@@ -1,14 +1,10 @@
 Chef::Log.debug("Running barracuda recipe")
 
-execute "update package index" do
-   command "apt-get update"
-   ignore_failure true
-   action :nothing
-end.run_action(:run)
-
-execute "Install linux headers to allow guest additions to update properly" do
- command "apt-get install dkms build-essential linux-headers-generic curl -y"
-end
+# execute "update package index" do
+#    command "apt-get update"
+#    ignore_failure true
+#    action :nothing
+# end.run_action(:run)
 
 remote_file "/tmp/BOA.sh" do
   source "http://files.aegir.cc/BOA.sh.txt"
@@ -53,7 +49,17 @@ end
     mode 00600
   end  
 
- # Only necessary as long as there is a need for it
+execute "Install linux headers to allow guest additions to update properly" do
+ command "apt-get install dkms build-essential linux-headers-generic curl linux-headers-3.2.0-23-generic-pae -y"
+end
+
+# Rebuild VirtualBox Guest Additions
+# http://vagrantup.com/v1/docs/troubleshooting.html
+  execute "Rebuild VirtualBox Guest Additions" do
+  command "sudo /etc/init.d/vboxadd setup"
+end
+
+# Only necessary as long as there is a need for it
 remote_file "/tmp/fix-remote-import-hostmaster-reoctopus.patch" do
   source "https://raw.github.com/MattReimer/boa-vagrant/master/patches/fix-remote-import-hostmaster-reoctopus.patch"
   mode 00755
@@ -64,8 +70,3 @@ execute "Apply Remote Import hostmaster patch" do
   command "patch -p1 < /tmp/fix-remote-import-hostmaster-reoctopus.patch"
 end
 
-# Rebuild VirtualBox Guest Additions
-# http://vagrantup.com/v1/docs/troubleshooting.html
-  execute "Rebuild VirtualBox Guest Additions" do
-  command "sudo /etc/init.d/vboxadd setup"
-end
