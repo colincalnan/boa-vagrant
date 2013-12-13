@@ -49,7 +49,12 @@ Step by Step instructions
 - 5.) In your /etc/hosts/ file point the domain names you would like to use (for main barracuda, octopus instance and each site) at 192.168.10.88
 Its possible to setup a wilcard dns on mac osx but I have not succeeded in doing so yet.
 
+    192.168.10.88 reoctopus.sub.aegir.local
+    192.168.10.88 chive.aegir.local
+    192.168.10.88 myamazingsite.aegir
+
 - 6.) You can rename the domain to access an octopus instance by unlocking the hostname platform in aegir and then editing the site and adding additional site aliases.
+
 
 Using Shared Folders
 --
