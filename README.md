@@ -16,6 +16,10 @@ Requirements
 
 - http://vagrantup.com/
 
+Note: I recommend you install the vbguest plugin on the system to avoid problems with the file mounting:
+
+    vagrant plugin install vagrant-vbguest 
+
 Getting vagrant in place
 --
 
@@ -34,20 +38,18 @@ Step by Step instructions
 
 - 1.) Fork this repo https://github.com/iaminawe/boa-vagrant and then clone your copy locally
 
-- 2.) Edit this file /cookbooks/barracuda/recipes/default.rb and replace iaminaweoctopus (my octopus username) with your octopus username and my e-mail with your e-mail - you can read more about the other additional options here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt
+- 2.) (optional) Edit this file /cookbooks/barracuda/recipes/default.rb and replace reoctopus (my octopus username) with your octopus username (it's arbitrary but don't use underscores) and my cmsadmin@raisedeyebrow.com with your e-mail - you can read more about the other additional options here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt NOTE: MAKE SURE YOU REPLACE ALL INSTANCES IN THE ENTIRE REPO IF YOU DO THIS (including file names).
 
-- 3.) Edit the patch filename and contents to replace all instances of iaminaweoctopus with your own octopus username https://github.com/iaminawe/boa-vagrant/patches
+- 3.) Run "Vagrant up" from within the folder and wait around 60 mins
 
-- 4.) Run "Vagrant up" from within the folder and wait around 60 mins
-
-- 5.) When its complete you should receive e-mails with links to your new aegir instances (check spam folder if you don't get anything)
+- 4.) When its complete you should receive e-mails with links to your new aegir instances (check spam folder if you don't get anything)
 - An alternative way to find the logins for barracuda is in /var/aegir/logs/install.log
 - An alternative way to find the logins for an octopus instance is in /data/disk/octopus_user/logs/install.log
 
-- 6.) In your /etc/hosts/ file point the domain names you would like to use (for main barracuda, octopus instance and each site) at 192.168.10.88
+- 5.) In your /etc/hosts/ file point the domain names you would like to use (for main barracuda, octopus instance and each site) at 192.168.10.88
 Its possible to setup a wilcard dns on mac osx but I have not succeeded in doing so yet.
 
-- 7.) You can rename the domain to access an octopus instance by unlocking the hostname platform in aegir and then editing the site and adding additional site aliases.
+- 6.) You can rename the domain to access an octopus instance by unlocking the hostname platform in aegir and then editing the site and adding additional site aliases.
 
 Using Shared Folders
 --
