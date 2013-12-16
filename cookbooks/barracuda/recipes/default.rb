@@ -15,36 +15,36 @@ execute "/tmp/BOA.sh" do
   creates "/usr/local/bin/boa"
 end
 
-execute "Run the BOA Installer reoctopus" do
-  command "boa in-head local cmsadmin@raisedeyebrow.com mini reoctopus"
+execute "Run the BOA Installer coltopus" do
+  command "boa in-head local cmsadmin@raisedeyebrow.com mini coltopus"
 end
 
-  user "reoctopus" do
+  user "coltopus" do
     supports :manage_home => true
-    home "/data/disk/reoctopus"
+    home "/data/disk/coltopus"
     shell "/bin/bash"
   end
 
-  directory "/data/disk/reoctopus/.ssh" do
-    owner "reoctopus"
+  directory "/data/disk/coltopus/.ssh" do
+    owner "coltopus"
     group "users"
     mode 00700
     recursive true
   end
 
   execute "Add ssh key to user" do
-    command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/reoctopus/.ssh/id_rsa"
-    creates "/data/disk/reoctopus/.ssh/id_rsa"
+    command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/coltopus/.ssh/id_rsa"
+    creates "/data/disk/coltopus/.ssh/id_rsa"
   end
 
-  file "/data/disk/reoctopus/.ssh/id_rsa" do
-    owner "reoctopus"
+  file "/data/disk/coltopus/.ssh/id_rsa" do
+    owner "coltopus"
     group "users"
     mode 00600
   end
   
-  file "/data/disk/reoctopus/.ssh/id_rsa.pub" do
-    owner "reoctopus"
+  file "/data/disk/coltopus/.ssh/id_rsa.pub" do
+    owner "coltopus"
     group "users" 
     mode 00600
   end  
@@ -60,13 +60,13 @@ end
 end
 
 # Only necessary as long as there is a need for it
-remote_file "/tmp/fix-remote-import-hostmaster-reoctopus.patch" do
-  source "https://raw.github.com/MattReimer/boa-vagrant/master/patches/fix-remote-import-hostmaster-reoctopus.patch"
+remote_file "/tmp/fix-remote-import-hostmaster-coltopus.patch" do
+  source "https://raw.github.com/colincalnan/boa-vagrant/master/patches/fix-remote-import-hostmaster-coltopus.patch"
   mode 00755
 end
 
 execute "Apply Remote Import hostmaster patch" do
-  cwd "/data/disk/reoctopus/.drush/provision/remote_import"
-  command "patch -p1 < /tmp/fix-remote-import-hostmaster-reoctopus.patch"
+  cwd "/data/disk/coltopus/.drush/provision/remote_import"
+  command "patch -p1 < /tmp/fix-remote-import-hostmaster-coltopus.patch"
 end
 
